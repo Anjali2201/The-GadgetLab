@@ -11,7 +11,7 @@ const Feedpage = () => {
         container
         sx={{
           justifyContent: "center",
-          px: 2,
+          px: 3,
           pb: 4,
           backgroundImage: "linear-gradient(#2d2e33, #212225)",
         }}
@@ -21,8 +21,20 @@ const Feedpage = () => {
           xs={12}
           sx={{
             display: "flex",
-            justifyContent: "center",
             mt: "130px",
+            mb: "30px",
+            mx: "30px",
+          }}
+        >
+          <Typography sx={{ color: "white", fontSize: "50px" }}>
+            Feed{" "}
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sx={{
+            display: "flex",
             mb: "30px",
           }}
         >
