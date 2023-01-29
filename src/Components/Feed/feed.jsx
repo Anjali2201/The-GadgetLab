@@ -21,8 +21,8 @@ const Feedpage = () => {
           xs={12}
           sx={{
             display: "flex",
-            mt: "130px",
-            mb: "30px",
+            mt: "110px",
+            mb: "10px",
             mx: "30px",
           }}
         >

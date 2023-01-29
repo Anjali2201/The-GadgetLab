@@ -18,8 +18,6 @@ const Boxes = () => {
           display: "flex",
           flexDirection: "column",
           flexWrap: "wrap",
-          rowGap: "10px",
-          columnGap: "10px",
           justifyContent: "center",
           alignItems: "center",
           backgroundColor: "#212225",
@@ -29,7 +27,8 @@ const Boxes = () => {
       >
         <CardMedia
           component="img"
-          image="https://picsum.photos/seed/{seed}/200/140"
+          height="140"
+          image="https://images.pexels.com/photos/4523062/pexels-photo-4523062.jpeg?auto=compress&cs=tinysrgb&w=600"
           alt="random"
         />
         <CardContent>

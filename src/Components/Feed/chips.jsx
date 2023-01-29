@@ -59,6 +59,7 @@ export default function ChipsArray() {
                 width: "100px",
                 height: "50px",
                 borderRadius: "10px",
+
                 "&:hover": {
                   border: "1px solid white",
                   cursor: "pointer",

@@ -40,7 +40,7 @@ export default function Appbar() {
     <AppBar
       sx={{
         backgroundColor: "transparent",
-        height: "150px",
+        height: "180px",
         boxShadow: "none",
       }}
     >
