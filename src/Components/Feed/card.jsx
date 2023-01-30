@@ -23,6 +23,10 @@ const Boxes = () => {
           backgroundColor: "#212225",
           borderRadius: "10px",
           boxShadow: "0px 0px 10px 0px #000000",
+          "&:hover": {
+            boxShadow: "0px 0px 10px 0px #ffffff",
+            cursor: "pointer",
+          },
         }}
       >
         <CardMedia
