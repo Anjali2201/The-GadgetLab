@@ -103,11 +103,11 @@ class Signin extends Component {
     axios
       .post("http://localhost:5000/api/user/login", newstate)
       .then((response) => {
-        console.log(response.data.contributor);
+        console.log(response.data.user.name);
         const cookieState = {
           email: this.state.email,
           password: this.state.password,
-          username: response.data.name,
+          username: response.data.user.name,
         };
         console.log("LOGGED IN");
         modalText = "Logged In Successfully !!";

@@ -24,7 +24,7 @@ const buttons = ["Feed", "Login", "Register"];
 let token = getCookie("login");
 let username = "";
 if (token) {
-  username = JSON.parse(getCookie("login")).name;
+  username = JSON.parse(getCookie("login")).username;
 }
 console.log(username);
 

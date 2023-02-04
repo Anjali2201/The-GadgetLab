@@ -1,8 +1,9 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import Boxes from "./card";
 import { Typography } from "@mui/material";
 import ChipsArray from "./chips";
+import { Link } from "@mui/material";
 
 const Feedpage = () => {
   return (
@@ -17,7 +18,7 @@ const Feedpage = () => {
         }}
       >
         <Grid
-          item
+          container
           xs={12}
           sx={{
             display: "flex",
@@ -26,10 +27,43 @@ const Feedpage = () => {
             mx: "30px",
           }}
         >
-          <Typography sx={{ color: "white", fontSize: "50px" }}>
-            Feed{" "}
-          </Typography>
+          <Grid
+            item
+            xs={5}
+            sx={{
+              display: "flex",
+            }}
+          >
+            <Typography sx={{ color: "white", fontSize: "50px" }}>
+              Feed{" "}
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <Link href="/newreview" underline="none" color="inherit">
+              <Button
+                sx={{
+                  background: "white",
+                  color: "black",
+                  boxShadow: "none",
+                  fontSize: "20px",
+                  "&:hover": {
+                    backgroundColor: "#212225",
+                  },
+                }}
+              >
+                New Review
+              </Button>
+            </Link>
+          </Grid>
         </Grid>
+
         <Grid
           item
           xs={12}
@@ -54,6 +88,23 @@ const Feedpage = () => {
           }}
         >
           <Typography sx={{ color: "white", my: 3 }}>Trending</Typography>
+
+          <Link href="/newreview" underline="none" color="inherit">
+            <Button
+              sx={{
+                mt: 10,
+                background: "white",
+                color: "black",
+                boxShadow: "none",
+                fontSize: "20px",
+                "&:hover": {
+                  backgroundColor: "#212225",
+                },
+              }}
+            >
+              New Review
+            </Button>
+          </Link>
         </Grid>
         <Grid
           item
