@@ -14,6 +14,7 @@ const btn = {
   color: "white",
   boxShadow: "none",
   fontSize: "20px",
+  width: "auto",
 
   "&:hover": {
     backgroundColor: "#212225",
@@ -55,11 +56,7 @@ export default function Appbar() {
       >
         <Grid container>
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <Grid container xs={12}>
-              <Grid item>
-                <Typography color="white">Gadget Reviewer</Typography>
-              </Grid>
-            </Grid>
+            <Typography color="white">Gadget Reviewer</Typography>
           </Link>
         </Grid>
 
@@ -84,7 +81,7 @@ export default function Appbar() {
             <Button sx={btn} onClick={logout}>
               Logout
             </Button>
-            <Button sx={btn}>{username}</Button>
+            {/* <Button sx={btn}>{username}</Button> */}
           </ButtonGroup>
         )}
       </Toolbar>
