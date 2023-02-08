@@ -60,8 +60,10 @@ function Postreview() {
   };
   let token = getCookie("login");
   let email = "";
+  let username = "";
   if (token) {
     email = JSON.parse(getCookie("login")).email;
+    username = JSON.parse(getCookie("login")).username;
   }
   const Createpost = async (e) => {
     e.preventDefault();
@@ -69,12 +71,12 @@ function Postreview() {
 
     var form_data = {
       authoremail: email,
+      authorname: username,
       gadgetname: form.current.gadgetname.value,
       category: form.current.category.value,
       model: form.current.model.value,
-      link: form.current.link.value,
       price: form.current.price.value,
-      description: form.current.review.value,
+      review: form.current.review.value,
       rate: form.current.rate.value,
     };
     console.log(form_data);
@@ -186,16 +188,7 @@ function Postreview() {
                 placeholder="Enter model"
                 sx={textfield}
               />
-              <TextField
-                type="text"
-                name="link"
-                fullWidth
-                label={
-                  <Typography style={{ color: "white" }}>Enter link</Typography>
-                }
-                placeholder="Enter link"
-                sx={textfield}
-              />
+
               <TextField
                 type="text"
                 name="price"
