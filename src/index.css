@@ -1,0 +1,20 @@
+/* color palette */
+
+/* https://coolors.co/cfdbd5-e8eddf-f5cb5c-242423-333533 */
+
+/* https://coolors.co/palette/1c1c1c-daddd8-ecebe4-eef0f2-fafaff */
+
+:root {
+    --color-bg: #5d5d7a;
+    --color-bg-variant: #1a1a19;
+    --color-primary: #fff;
+    --color-primary-variant: rgba(203, 203, 193, 0.4);
+    --color-white: #fff;
+    --color-light: rgba(244, 239, 239, 0.6);
+
+    --container-width-lg: 75%;
+    --container-width-md: 86%;
+    --conatiner-width-ms: 90%;
+
+    --transition: all 400ms ease;
+}

@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 import getCookie from "../../hooks/getCookie";
 
 const buttons = { margin: "8px", backgroundColor: "#1D3557" };
-const text = { padding: 2, margin: "3px 0" };
 
 var modalText = "Modal Open";
 

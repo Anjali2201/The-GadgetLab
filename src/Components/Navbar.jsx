@@ -11,7 +11,7 @@ import removeCookie from "../hooks/removeCookie";
 const btn = {
   marginRight: "20px",
   backgroundColor: "transparent",
-  color: "white",
+  color: "black",
   boxShadow: "none",
   fontSize: "20px",
   width: "auto",
@@ -48,15 +48,15 @@ export default function Appbar() {
       <Toolbar
         sx={{
           m: 2,
-          backgroundColor: "#37393e",
+          backgroundColor: "#EEF0F2",
           borderRadius: "10px",
           py: 1,
-          boxShadow: "1px 1px 1px 1px #212225",
+          boxShadow: "1px 1px 1px 1px #DADDD8",
         }}
       >
         <Grid container>
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <Typography color="white">Gadget Reviewer</Typography>
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            <Typography color="black">Gadget Reviewer</Typography>
           </Link>
         </Grid>
 
@@ -65,7 +65,7 @@ export default function Appbar() {
             {buttons.map((button) => (
               <Link
                 to={`/${button.toLowerCase()}`}
-                style={{ textDecoration: "none", color: "white" }}
+                style={{ textDecoration: "none", color: "black" }}
               >
                 <Button variant="contained" sx={btn}>
                   {button}
@@ -75,7 +75,7 @@ export default function Appbar() {
           </ButtonGroup>
         ) : (
           <ButtonGroup variant="text" sx={{ mt: 1 }}>
-            <Link to="/feed" style={{ textDecoration: "none", color: "white" }}>
+            <Link to="/feed" style={{ textDecoration: "none", color: "black" }}>
               <Button sx={btn}>Feed</Button>
             </Link>
             <Button sx={btn} onClick={logout}>

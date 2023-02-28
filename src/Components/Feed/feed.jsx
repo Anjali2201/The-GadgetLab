@@ -1,15 +1,14 @@
 import React from "react";
 import { Button, CardHeader, Grid } from "@mui/material";
 import { Typography } from "@mui/material";
-import ChipsArray from "./chips";
 import { Link } from "@mui/material";
-import { Card, CardActions, CardContent, CardMedia } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 const Feedpage = () => {
   const [post, setMyData] = useState([]);
-  const [isError, setIsError] = useState("");
+  const [setIsError] = useState("");
 
   useEffect(() => {
     axios
@@ -91,7 +90,7 @@ const Feedpage = () => {
         </Grid>
 
         {/* ------------------------------Chips---------------------------------- */}
-{/* 
+        {/* 
         <Grid
           item
           xs={12}
@@ -189,7 +188,8 @@ const Feedpage = () => {
                   fontSize: "15px",
                 }}
               >
-                By <span  style={{fontWeight:"light"}}> {post.authorname}</span>
+                By{" "}
+                <span style={{ fontWeight: "light" }}> {post.authorname}</span>
               </Typography>
             </Card>
           ))}
