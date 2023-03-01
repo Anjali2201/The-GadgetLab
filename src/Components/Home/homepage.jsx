@@ -3,30 +3,18 @@ import { Divider, Grid, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import "../../index.css";
-
-const styles = {
-  bg: {
-    borderRadius: "10px",
-    // boxShadow: "1px 1px 1px 1px #212225",
-    // border: "1px solid white",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100vh",
-  },
-  btn: {
-    marginRight: "20px",
-    backgroundColor: "transparent",
-    color: "white",
-    boxShadow: "none",
-    fontSize: "20px",
-
-    "&:hover": {
-      backgroundColor: "#212225",
-    },
-  },
-};
+import Lottie from "react-lottie";
+import * as animationData from "../Assets/Smile2.json";
 
 const homepage = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData.default,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   return (
     <div>
       <Grid
@@ -35,56 +23,103 @@ const homepage = () => {
         sx={{
           backgroundImage: "#EEF0F2",
           height: "auto",
-          px: 4,
-          py: 1,
 
           justifyContent: "center",
+          alignItems: "center",
         }}
       >
         {/* ----------------------------------- Heading -------------------------- */}
-        <Grid item xs={12} sx={styles.bg} marginTop="150px">
-          <Typography
-            variant="h3"
+        <Grid
+          container
+          xs={12}
+          sx={{
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <Grid
+            item
+            xs={4}
             sx={{
-              color: "black",
-              fontWeight: "bold",
-              textAlign: "center",
+              justifyContent: "right",
+              alignItems: "right",
             }}
           >
-            Welcome to Gadget Reviewer
-          </Typography>
+            <Typography
+              sx={{
+                color: "black",
+                textAlign: "right",
+                fontSize: "5rem",
+                fontWeight: "bold",
+                letterSpacing: "0.1rem",
+                lineHeight: "5rem",
+              }}
+            >
+              Gadget <br />
+              Reviewer
+            </Typography>
 
-          <Typography variant="h5" sx={{ color: "black", textAlign: "center" }}>
-            A place where you can review your gadgets and see what others have
-            to say about them
-          </Typography>
+            <Typography
+              sx={{
+                mt: "20px",
+                color: "black",
+                textAlign: "right",
+                fontSize: "1.5rem",
+                fontWeight: "bold",
+                letterSpacing: "0.1rem",
+              }}
+            >
+              Review your favourite gadgets, and get the best deals.
+            </Typography>
+
+            <Button
+              sx={{
+                mt: "20px",
+                backgroundColor: "#F9A826",
+                color: "black",
+                textAlign: "right",
+                fontSize: "1rem",
+                fontWeight: "bold",
+                letterSpacing: "0.1rem",
+                borderRadius: "10px",
+                padding: "10px 20px",
+              }}
+            >
+              Explore
+            </Button>
+          </Grid>
+
+          <Grid
+            item
+            xs={6}
+            sx={{
+              px: "20px",
+              justifyContent: "left",
+            }}
+          >
+            <Lottie options={defaultOptions} height={600} />
+          </Grid>
         </Grid>
 
         <Divider
-          sx={{ width: "100%", height: "1px", backgroundColor: "black" }}
+          sx={{ width: "90%", height: "1px", backgroundColor: "black" }}
         />
         {/* ----------------------------------- About -------------------------- */}
 
-        <Grid item xs={12} sx={styles.bg}>
-          <Typography
-            variant="h4"
-            sx={{ color: "black", m: 3, textAlign: "center" }}
-          >
-            About Us
-          </Typography>
-          <Stack direction="row" spacing={2}>
-            <Button variant="contained" sx={styles.btn}>
-              Explore
-            </Button>
-            <Button variant="contained" sx={styles.btn}>
-              Join Us
-            </Button>
-          </Stack>
+        <Grid item xs={12}>
+          <Grid item xs={12}>
+            <Typography
+              variant="h4"
+              sx={{ color: "black", m: 3, textAlign: "center" }}
+            >
+              About Us
+            </Typography>
+          </Grid>
         </Grid>
-
-        <Divider
+        {/* <Divider
           sx={{ width: "100%", height: "1px", backgroundColor: "white" }}
-        />
+        /> */}
       </Grid>
     </div>
   );

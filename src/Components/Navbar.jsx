@@ -10,14 +10,12 @@ import removeCookie from "../hooks/removeCookie";
 
 const btn = {
   marginRight: "20px",
-  backgroundColor: "transparent",
   color: "black",
-  boxShadow: "none",
-  fontSize: "20px",
-  width: "auto",
+  backgroundColor: "transparent",
 
   "&:hover": {
-    backgroundColor: "#212225",
+    backgroundColor: "#F9A826",
+    color: "black",
   },
 };
 
@@ -56,7 +54,15 @@ export default function Appbar() {
       >
         <Grid container>
           <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-            <Typography color="black">Gadget Reviewer</Typography>
+            <Typography
+              color="black"
+              sx={{
+                fontSize: "30px",
+                fontWeight: "bold",
+              }}
+            >
+              Gadget Reviewer
+            </Typography>
           </Link>
         </Grid>
 
@@ -67,9 +73,7 @@ export default function Appbar() {
                 to={`/${button.toLowerCase()}`}
                 style={{ textDecoration: "none", color: "black" }}
               >
-                <Button variant="contained" sx={btn}>
-                  {button}
-                </Button>
+                <Button sx={btn}>{button}</Button>
               </Link>
             ))}
           </ButtonGroup>
