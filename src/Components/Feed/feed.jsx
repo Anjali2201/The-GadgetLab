@@ -1,10 +1,12 @@
 import React from "react";
-import { Button, CardHeader, Grid } from "@mui/material";
+import { Button, CardActions, CardHeader, Grid } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Link } from "@mui/material";
 import { Card, CardContent } from "@mui/material";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Stack } from "@mui/system";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 
 const Feedpage = () => {
   const [post, setMyData] = useState([]);
@@ -38,60 +40,29 @@ const Feedpage = () => {
           justifyContent: "center",
           px: 3,
           pb: 4,
-          backgroundImage: "linear-gradient(#2d2e33, #212225)",
+          backgroundColor: "#FAFAFF",
+          minHeight: "100vh",
+          height: "auto",
         }}
       >
         {/* ------------------------------Heading---------------------------------- */}
         <Grid
-          container
+          item
           xs={12}
           sx={{
-            display: "flex",
             mt: "110px",
             mb: "10px",
             mx: "30px",
           }}
         >
-          <Grid
-            item
-            xs={5}
-            sx={{
-              display: "flex",
-            }}
-          >
-            <Typography sx={{ color: "white", fontSize: "50px" }}>
-              Feed{" "}
-            </Typography>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-            }}
-          >
-            <Link href="/newreview" underline="none" color="inherit">
-              <Button
-                sx={{
-                  background: "white",
-                  color: "black",
-                  boxShadow: "none",
-                  fontSize: "20px",
-                  "&:hover": {
-                    backgroundColor: "#212225",
-                  },
-                }}
-              >
-                New Review
-              </Button>
-            </Link>
-          </Grid>
+          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+            Reviews
+          </Typography>
         </Grid>
 
         {/* ------------------------------Chips---------------------------------- */}
-        {/* 
-        <Grid
+
+        {/* <Grid
           item
           xs={12}
           sx={{
@@ -105,41 +76,39 @@ const Feedpage = () => {
         {/* ------------------------------Left Bar---------------------------------- */}
         <Grid
           item
-          xs={2}
+          xs={12}
+          sm={2}
+          md={2}
           sx={{
-            height: "100vh",
-            backgroundColor: "#212225",
-            display: "flex",
-
             borderRadius: "10px",
-            boxShadow: "0px 0px 10px 0px #000000",
-            justifyContent: "center",
+            alignItems: "center",
+            p: 2,
           }}
         >
-          <Typography sx={{ color: "white", my: 3 }}>Trending</Typography>
-
-          {/* <Link href="/newreview" underline="none" color="inherit">
+          <Link href="/newreview" underline="none" color="inherit">
             <Button
               sx={{
                 mt: 10,
-                background: "white",
                 color: "black",
                 boxShadow: "none",
                 fontSize: "20px",
-                "&:hover": {
-                  backgroundColor: "#212225",
-                },
+                fontWeight: "bold",
+                backgroundColor: "#F9A826",
+                borderRadius: "10px",
+                padding: "10px 20px",
               }}
             >
-              New Review
+              Post a Review
             </Button>
-          </Link> */}
+          </Link>
         </Grid>
 
         {/* ------------------------------Post---------------------------------- */}
         <Grid
           item
-          xs={10}
+          xs={12}
+          sm={10}
+          md={10}
           sx={{
             display: "flex",
             flexDirection: "row",
@@ -161,36 +130,55 @@ const Feedpage = () => {
                 flexDirection: "column",
                 flexWrap: "wrap",
                 alignItems: "center",
-                backgroundColor: "#212225",
                 borderRadius: "10px",
-                boxShadow: "0px 0px 10px 0px #000000",
-                "&:hover": {
-                  boxShadow: "0px 0px 10px 0px #ffffff",
-                  cursor: "pointer",
-                },
               }}
             >
-              <CardHeader title={post.gadgetname} sx={{ color: "white" }} />
-              {/* <Typography sx={{ color: "white" }}>{post.category}</Typography> */}
+              <CardHeader title={post.gadgetname} sx={{ color: "black" }} />
+              {/* <Typography sx={{ color: "black" }}>{post.category}</Typography> */}
 
-              {/* <Typography sx={{ color: "white" }}>{post.model}</Typography>
-              <Typography sx={{ color: "white" }}>{post.price}</Typography>
-              <Typography sx={{ color: "white" }}>{post.rate}</Typography>
+              {/* <Typography sx={{ color: "black" }}>{post.model}</Typography>
+              <Typography sx={{ color: "black" }}>{post.price}</Typography>
+              <Typography sx={{ color: "black" }}>{post.rate}</Typography>
              
-              <Typography sx={{ color: "white" }}>{post.authoremail}</Typography> */}
+              <Typography sx={{ color: "black" }}>{post.authoremail}</Typography> */}
 
               <CardContent>
-                <Typography sx={{ color: "white" }}>{post.review}</Typography>
+                <Typography sx={{ color: "black" }}>
+                  {post.review.slice(0, 100)} ...{" "}
+                  <Link href="/review">Read More</Link>
+                </Typography>
               </CardContent>
               <Typography
                 sx={{
-                  color: "white",
+                  color: "black",
                   fontSize: "15px",
                 }}
               >
                 By{" "}
                 <span style={{ fontWeight: "light" }}> {post.authorname}</span>
               </Typography>
+
+              <CardActions sx={{ mt: "auto" }}>
+                <Stack direction="row" spacing={2}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#83c5be",
+                    }}
+                  >
+                    <ThumbUpIcon sx={{ color: "black" }} />
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      border: "1px solid black",
+                      backgroundColor: "#DADDD8",
+                    }}
+                  >
+                    <Typography sx={{ color: "black" }}>Comment</Typography>
+                  </Button>
+                </Stack>
+              </CardActions>
             </Card>
           ))}
         </Grid>

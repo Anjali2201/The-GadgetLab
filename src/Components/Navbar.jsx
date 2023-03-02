@@ -7,6 +7,7 @@ import { ButtonGroup, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import getCookie from "../hooks/getCookie";
 import removeCookie from "../hooks/removeCookie";
+import logo from "./Assets/logo.png";
 
 const btn = {
   marginRight: "20px",
@@ -46,19 +47,34 @@ export default function Appbar() {
       <Toolbar
         sx={{
           m: 2,
-          backgroundColor: "#EEF0F2",
+          backgroundColor: "#FAFAFF",
           borderRadius: "10px",
           py: 1,
           boxShadow: "1px 1px 1px 1px #DADDD8",
         }}
       >
-        <Grid container>
+        <Grid
+          container
+          sx={{
+            alignItems: "center",
+            justifyContent: "left",
+          }}
+        >
+          <img src={logo} alt="logo" style={{ height: "50px" }} />
           <Link to="/" style={{ textDecoration: "none", color: "black" }}>
             <Typography
-              color="black"
               sx={{
-                fontSize: "30px",
+                fontSize: "1rem",
                 fontWeight: "bold",
+                letterSpacing: "0.1rem",
+                ml: 2,
+                color: "black",
+                display: {
+                  xs: "none",
+                  sm: "none",
+                  md: "block",
+                  lg: "block",
+                },
               }}
             >
               Gadget Reviewer

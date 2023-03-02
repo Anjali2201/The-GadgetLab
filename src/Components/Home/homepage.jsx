@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider, Grid, Typography } from "@mui/material";
+import { Divider, Grid, Paper, Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import "../../index.css";
@@ -23,7 +23,6 @@ const homepage = () => {
         sx={{
           backgroundImage: "#EEF0F2",
           height: "auto",
-
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -35,17 +34,11 @@ const homepage = () => {
           sx={{
             justifyContent: "center",
             alignItems: "center",
-            height: "100vh",
+            height: "auto",
+            minHeight: "90vh",
           }}
         >
-          <Grid
-            item
-            xs={4}
-            sx={{
-              justifyContent: "right",
-              alignItems: "right",
-            }}
-          >
+          <Grid item xs={10} sm={10} lg={4}>
             <Typography
               sx={{
                 color: "black",
@@ -70,7 +63,7 @@ const homepage = () => {
                 letterSpacing: "0.1rem",
               }}
             >
-              Review your favourite gadgets, and get the best deals.
+              Review used gadgets. Help others make the right choice.
             </Typography>
 
             <Button
@@ -78,7 +71,6 @@ const homepage = () => {
                 mt: "20px",
                 backgroundColor: "#F9A826",
                 color: "black",
-                textAlign: "right",
                 fontSize: "1rem",
                 fontWeight: "bold",
                 letterSpacing: "0.1rem",
@@ -96,30 +88,99 @@ const homepage = () => {
             sx={{
               px: "20px",
               justifyContent: "left",
+              display: {
+                xs: "none",
+                sm: "none",
+                md: "none",
+                lg: "block",
+              },
             }}
           >
             <Lottie options={defaultOptions} height={600} />
           </Grid>
         </Grid>
 
-        <Divider
-          sx={{ width: "90%", height: "1px", backgroundColor: "black" }}
-        />
+        {/* <Divider
+          sx={{ width: "90%", height: "1px", backgroundColor: "#DADDD8" }}
+        /> */}
         {/* ----------------------------------- About -------------------------- */}
 
-        <Grid item xs={12}>
-          <Grid item xs={12}>
+        <Grid
+          container
+          xs={12}
+          sx={{
+            justifyContent: "center",
+            alignItems: "center",
+            height: "auto",
+            minHeight: "100vh",
+          }}
+        >
+          {/* <Grid item xs={12}>
             <Typography
               variant="h4"
               sx={{ color: "black", m: 3, textAlign: "center" }}
             >
               About Us
             </Typography>
+          </Grid> */}
+
+          <Grid item xs={8} sx={{}}>
+            <Typography
+              sx={{
+                color: "black",
+                textAlign: "right",
+                fontWeight: "bold",
+                fontSize: "2rem",
+              }}
+            >
+              Confused about which gadget to buy? 😕
+            </Typography>
+
+            <Typography
+              sx={{
+                color: "black",
+                textAlign: "right",
+                fontSize: "1.5rem",
+                letterSpacing: "0.1rem",
+                mt: "20px",
+              }}
+            >
+              We are here to help you. <br />
+              Find the best gadgets for your needs. <br />
+              Read reviews from other users. <br />
+            </Typography>
+          </Grid>
+
+          <Grid item xs={8}>
+            <Typography
+              sx={{
+                color: "black",
+                textAlign: "left",
+                fontWeight: "bold",
+                fontSize: "2rem",
+              }}
+            >
+              Help others make the right choice. 😊
+            </Typography>
+
+            <Typography
+              sx={{
+                color: "black",
+                textAlign: "left",
+                fontSize: "1.5rem",
+                mt: "20px",
+              }}
+            >
+              Share your experience with others. <br />
+              Help others make the right choice. <br />
+              Write a review for a gadget you have used.
+            </Typography>
           </Grid>
         </Grid>
-        {/* <Divider
-          sx={{ width: "100%", height: "1px", backgroundColor: "white" }}
-        /> */}
+
+        <Divider
+          sx={{ width: "90%", height: "1px", backgroundColor: "#DADDD8" }}
+        />
       </Grid>
     </div>
   );
