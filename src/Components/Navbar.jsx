@@ -13,7 +13,8 @@ const btn = {
   marginRight: "20px",
   color: "black",
   backgroundColor: "transparent",
-
+  height: "40px",
+  width: "auto",
   "&:hover": {
     backgroundColor: "#F9A826",
     color: "black",
@@ -82,28 +83,33 @@ export default function Appbar() {
           </Link>
         </Grid>
 
-        {!token ? (
-          <ButtonGroup variant="text">
-            {buttons.map((button) => (
+        <Grid container sx={{ justifyContent: "flex-end" }}>
+          {!token ? (
+            <ButtonGroup variant="text">
+              {buttons.map((button) => (
+                <Link
+                  to={`/${button.toLowerCase()}`}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <Button sx={btn}>{button}</Button>
+                </Link>
+              ))}
+            </ButtonGroup>
+          ) : (
+            <ButtonGroup variant="text">
               <Link
-                to={`/${button.toLowerCase()}`}
+                to="/feed"
                 style={{ textDecoration: "none", color: "black" }}
               >
-                <Button sx={btn}>{button}</Button>
+                <Button sx={btn}>Feed</Button>
               </Link>
-            ))}
-          </ButtonGroup>
-        ) : (
-          <ButtonGroup variant="text" sx={{ mt: 1 }}>
-            <Link to="/feed" style={{ textDecoration: "none", color: "black" }}>
-              <Button sx={btn}>Feed</Button>
-            </Link>
-            <Button sx={btn} onClick={logout}>
-              Logout
-            </Button>
-            {/* <Button sx={btn}>{username}</Button> */}
-          </ButtonGroup>
-        )}
+              <Button sx={btn} onClick={logout}>
+                Logout
+              </Button>
+              <Button sx={btn}>{username}</Button>
+            </ButtonGroup>
+          )}
+        </Grid>
       </Toolbar>
     </AppBar>
   );
