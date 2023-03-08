@@ -21,7 +21,7 @@ const homepage = () => {
         container
         xs={12}
         sx={{
-          backgroundImage: "#EEF0F2",
+          backgroundColor: "#EEF0F2",
           height: "auto",
           justifyContent: "center",
           alignItems: "center",

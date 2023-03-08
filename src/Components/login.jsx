@@ -16,7 +16,11 @@ import getCookie from "../hooks/getCookie";
 import removeCookie from "../hooks/removeCookie";
 import { useNavigate } from "react-router-dom";
 
-const buttons = { margin: "8px 0", backgroundColor: "#37393e" };
+const buttons = {
+  margin: "8px",
+  height: 50,
+  backgroundColor: "#F9A826",
+};
 var modalText;
 
 const style = {
@@ -32,7 +36,7 @@ const style = {
 };
 const textfield = {
   "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-    borderColor: "white",
+    borderColor: "black",
   },
   m: 1,
 };
@@ -40,13 +44,12 @@ const btn = {
   height: 70,
   width: 190,
   margin: "5px",
-  backgroundColor: "#37393e",
   border: "none",
   fontSize: 12,
-  color: "white",
+  color: "black",
+  backgroundColor: "#83c5be",
   "&:hover": {
-    border: "1px solid white",
-    backgroundColor: "#212225",
+    border: "1px solid black",
   },
 };
 class Signin extends Component {
@@ -146,14 +149,14 @@ class Signin extends Component {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            backgroundImage: "linear-gradient(#2d2e33, #212225)",
+            backgroundColor: "#EEF0F2",
             height: "100vh",
             p: 4,
           }}
         >
           <Typography
             variant="h3"
-            style={{ color: "white", textAlign: "right" }}
+            style={{ color: "black", textAlign: "right" }}
           >
             Join Us! <br />
             Explore the world of Technologies <br />
@@ -166,21 +169,22 @@ class Signin extends Component {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            backgroundImage: "linear-gradient(#2d2e33, #212225)",
+            backgroundColor: "#EEF0F2",
           }}
         >
           <Paper
             style={{
-              padding: 20,
+              padding: 50,
               margin: "10px",
               height: "70%",
-              backgroundColor: "#212225",
+              width: "70%",
+              borderRadius: "10px",
             }}
           >
             <Typography
               variant="h4"
               sx={{
-                color: "white",
+                color: "black",
                 fontWeight: "bold",
                 textAlign: "center",
                 m: 2,
@@ -195,7 +199,7 @@ class Signin extends Component {
                 value={email}
                 fullWidth
                 label={
-                  <Typography style={{ color: "white" }}>
+                  <Typography style={{ color: "black" }}>
                     Enter your email
                   </Typography>
                 }
@@ -208,7 +212,7 @@ class Signin extends Component {
                 value={password}
                 fullWidth
                 label={
-                  <Typography style={{ color: "white" }}>
+                  <Typography style={{ color: "black" }}>
                     Enter your password
                   </Typography>
                 }
@@ -238,14 +242,14 @@ class Signin extends Component {
             >
               <Button sx={btn}>
                 <Link
-                  style={{ textDecoration: "None", color: "white" }}
+                  style={{ textDecoration: "None", color: "black" }}
                   href={`/forgotpassword`}
                 >
                   Forgot Password
                 </Link>
               </Button>
               <Link
-                style={{ textDecoration: "None", color: "white" }}
+                style={{ textDecoration: "None", color: "black" }}
                 href={`/signup`}
               >
                 <Button sx={btn}>New User? Sign Up</Button>
@@ -266,7 +270,7 @@ class Signin extends Component {
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               <Link
-                style={{ textDecoration: "None", color: "white" }}
+                style={{ textDecoration: "None", color: "black" }}
                 href={this.state.lastpage}
               >
                 <Button style={buttons} variant="contained" color="primary">

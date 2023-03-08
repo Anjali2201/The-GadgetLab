@@ -4,6 +4,7 @@ import {
   CardActions,
   CardHeader,
   CardMedia,
+  Divider,
   Grid,
 } from "@mui/material";
 import { Typography } from "@mui/material";
@@ -58,56 +59,32 @@ const Feedpage = () => {
     <div>
       <Grid
         container
+        xs={12}
         sx={{
           justifyContent: "center",
-          px: 3,
-          pb: 4,
+          alignItems: "center",
+          p: 5,
           backgroundColor: "#EEF0F2",
           minHeight: "100vh",
           height: "auto",
         }}
       >
-        {/* ------------------------------Heading---------------------------------- */}
-        <Grid
-          item
-          xs={12}
-          sx={{
-            mt: "110px",
-            mb: "10px",
-            mx: "30px",
-          }}
-        >
-          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
-            Reviews
-          </Typography>
-        </Grid>
-        {/* ------------------------------Chips---------------------------------- */}
-        {/* <Grid
-          item
-          xs={12}
-          sx={{
-            display: "flex",
-            mb: "30px",
-          }}
-        >
-          <ChipsArray />
-        </Grid> */}
         {/* ------------------------------Left Bar---------------------------------- */}
         <Grid
           item
           xs={12}
-          sm={2}
+          sm={12}
           md={2}
           sx={{
             borderRadius: "10px",
             alignItems: "center",
-            p: 2,
+            justifyContent: "center",
+            // border: "1px solid black",
           }}
         >
           <Link href="/newreview" underline="none" color="inherit">
             <Button
               sx={{
-                mt: 10,
                 color: "black",
                 boxShadow: "none",
                 fontSize: "20px",
@@ -121,19 +98,22 @@ const Feedpage = () => {
             </Button>
           </Link>
         </Grid>
-        {/* ------------------------------Post---------------------------------- */}
+        {/* ------------------------------Right bar---------------------------------- */}
         <Grid
           item
           xs={12}
-          sm={10}
+          sm={12}
           md={10}
           sx={{
+            height: "auto",
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
             rowGap: "30px",
             columnGap: "30px",
             justifyContent: "center",
+            alignItems: "center",
+            // border: "1px solid black",
           }}
         >
           {post.map((post) => (
@@ -141,21 +121,11 @@ const Feedpage = () => {
               sx={{
                 width: "400px",
                 height: "auto",
-                p: 3,
-                display: "flex",
-                flexDirection: "column",
-                flexWrap: "wrap",
+                p: 2,
                 alignItems: "center",
                 borderRadius: "25px",
-                // backgroundColor: "#EEF0F2",
               }}
             >
-              <CardMedia
-                component="img"
-                height="140"
-                image="https://th.bing.com/th/id/OIP.CIjnLNfuNOZ_71H2g1nE5gHaF7?pid=ImgDet&rs=1"
-                alt="random"
-              />
               <CardHeader title={post.gadgetname} />
 
               <CardContent>
@@ -208,8 +178,12 @@ const Feedpage = () => {
                       padding: "5px 10px",
                     }}
                   >
-                    {post.review.slice(0, 100)} ...{" "}
-                    <Button onClick={handleOpen}>Read More</Button>
+                    {post.review.slice(0, 100)} ... <br />
+                    <Button onClick={handleOpen}>
+                      <Typography sx={{ fontSize: "16px" }}>
+                        Read More
+                      </Typography>
+                    </Button>
                   </Typography>
                   <Typography
                     sx={{
@@ -228,32 +202,44 @@ const Feedpage = () => {
                 </Grid>
               </CardContent>
 
-              <CardActions sx={{ mt: "10px", p: 0 }}>
+              <CardActions>
                 <Grid
-                  item
-                  sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "center",
-                  }}
+                  container
+                  xs={12}
+                  sx={{ justifyContent: "space-between", alignItems: "center" }}
                 >
-                  <Button
-                    variant="contained"
-                    sx={{
-                      backgroundColor: "transparent",
-                      mr: "10px",
-                    }}
-                  >
-                    <ThumbUpIcon sx={{ color: "black", fontSize: "25px" }} />
-                  </Button>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      backgroundColor: "transparent",
-                    }}
-                  >
-                    <ChatBubbleIcon sx={{ color: "black", fontSize: "25px" }} />
-                  </Button>
+                  <Grid item>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        backgroundColor: "transparent",
+                        mr: "10px",
+                        color: "black",
+                      }}
+                    >
+                      <ThumbUpIcon sx={{ color: "black", fontSize: "25px" }} />{" "}
+                      56
+                    </Button>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        backgroundColor: "transparent",
+                        color: "black",
+                      }}
+                    >
+                      <ChatBubbleIcon
+                        sx={{ color: "black", fontSize: "25px" }}
+                      />
+                      26
+                    </Button>
+                  </Grid>
+
+                  <Grid item>
+                    <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
+                      <span style={{ color: "#F9A826" }}>₹</span>
+                      {post.price}
+                    </Typography>
+                  </Grid>
                 </Grid>
               </CardActions>
             </Card>

@@ -31,7 +31,7 @@ const style = {
 
 const textfield = {
   "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-    borderColor: "white",
+    borderColor: "black",
   },
   m: 1,
 };
@@ -105,14 +105,14 @@ function Signup() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            backgroundImage: "linear-gradient(#2d2e33, #212225)",
+            backgroundColor: "#EEF0F2",
             height: "100vh",
             p: 4,
           }}
         >
           <Typography
             variant="h3"
-            style={{ color: "white", textAlign: "right" }}
+            style={{ color: "black", textAlign: "right" }}
           >
             Join Us! <br />
             Explore the world of Technologies <br />
@@ -125,21 +125,22 @@ function Signup() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            backgroundImage: "linear-gradient(#2d2e33, #212225)",
+            backgroundColor: "#EEF0F2",
           }}
         >
           <Paper
             style={{
-              padding: 20,
+              padding: 50,
               margin: "50px",
               height: "70%",
-              backgroundColor: "#212225",
+              width: "70%",
+              borderRadius: 10,
             }}
           >
             <Typography
               variant="h4"
               sx={{
-                color: "white",
+                color: "black",
                 fontWeight: "bold",
                 textAlign: "center",
                 m: 2,
@@ -154,7 +155,7 @@ function Signup() {
                 name="name"
                 fullWidth
                 label={
-                  <Typography style={{ color: "white" }}>Full Name</Typography>
+                  <Typography style={{ color: "black" }}>Full Name</Typography>
                 }
                 sx={textfield}
               />
@@ -165,7 +166,7 @@ function Signup() {
                 name="email"
                 fullWidth
                 label={
-                  <Typography style={{ color: "white" }}>
+                  <Typography style={{ color: "black" }}>
                     Email Address
                   </Typography>
                 }
@@ -178,7 +179,7 @@ function Signup() {
                 type="password"
                 fullWidth
                 label={
-                  <Typography style={{ color: "white" }}>Password</Typography>
+                  <Typography style={{ color: "black" }}>Password</Typography>
                 }
                 sx={textfield}
               />
@@ -189,7 +190,7 @@ function Signup() {
                 type="password"
                 fullWidth
                 label={
-                  <Typography style={{ color: "white" }}>
+                  <Typography style={{ color: "black" }}>
                     Confirm Password
                   </Typography>
                 }
@@ -201,13 +202,13 @@ function Signup() {
                   height: 70,
                   width: 190,
                   margin: "5px",
-                  backgroundColor: "#37393e",
+                  backgroundColor: "#F9A826",
                   border: "none",
                   fontSize: 15,
-                  color: "white",
+                  color: "black",
                   "&:hover": {
-                    border: "1px solid white",
-                    backgroundColor: "#212225",
+                    border: "1px solid black",
+                    backgroundColor: "#F9A826",
                   },
                 }}
                 type="submit"
@@ -231,7 +232,7 @@ function Signup() {
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               {/* <Link
-                style={{ textDecoration: "None", color: "white" }}
+                style={{ textDecoration: "None", color: "black" }}
                 to={lastpage}
               > */}
               <Button

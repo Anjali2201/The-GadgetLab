@@ -10,8 +10,7 @@ export default function Footer() {
       container
       xs={12}
       sx={{
-        mt: "20px",
-        backgroundColor: "#FAFAFF",
+        backgroundColor: "#EEF0F2",
         color: "white",
         justifyContent: "center",
       }}
@@ -24,13 +23,15 @@ export default function Footer() {
       >
         <Container
           sx={{
-            backgroundColor: "#37393e",
+            backgroundColor: "#FAFAFF",
             borderRadius: "10px",
             py: 2,
             boxShadow: "1px 1px 1px 1px #212225",
           }}
         >
-          <Typography variant="body2">Made with ❤️ by Anjali</Typography>
+          <Typography variant="body2" color="black">
+            Made with ❤️ by Anjali
+          </Typography>
         </Container>
       </Box>
     </Grid>
