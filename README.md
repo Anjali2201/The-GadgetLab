@@ -43,17 +43,17 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 
 ## Built with
 
-    - [Node.js](https://nodejs.org/en/) - JavaScript runtime built on Chrome's V8 JavaScript engine.
+  - [Node.js](https://nodejs.org/en/) - JavaScript runtime built on Chrome's V8 JavaScript engine.
 
-    - [Express.js](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js.
+  - [Express.js](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js.
 
-    - [MongoDB](https://www.mongodb.com/) - MongoDB is a general purpose, document-based, distributed database built for modern application developers and for the cloud era.
+  - [MongoDB](https://www.mongodb.com/) - MongoDB is a general purpose, document-based, distributed database built for modern application developers and for the cloud era.
 
-    - [Mongoose](https://mongoosejs.com/) - Elegant mongodb object modeling for node.js.
+  - [Mongoose](https://mongoosejs.com/) - Elegant mongodb object modeling for node.js.
 
-    - [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces.
+  - [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces.
 
-    - [material-ui](https://material-ui.com/) - React components for faster and easier web development. Build your own design system, or start with Material Design.
+  - [material-ui](https://material-ui.com/) - React components for faster and easier web development. Build your own design system, or start with Material Design.
 
 # Thank You
 
