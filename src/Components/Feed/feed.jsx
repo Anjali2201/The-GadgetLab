@@ -7,20 +7,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
 import ChipsArray from "./chips";
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import getCookie from "../../hooks/getCookie";
+
+let token = getCookie("login");
+let email = "";
+if (token) {
+  email = JSON.parse(getCookie("login")).email;
+}
 
 const Feedpage = () => {
   const [post, setMyData] = useState([]);
@@ -37,7 +31,7 @@ const Feedpage = () => {
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+
   return (
     <div>
       <Grid
@@ -122,155 +116,163 @@ const Feedpage = () => {
           }}
         >
           {post.map((post) => (
-            <Grid item>
-              <Card
-                sx={{
-                  width: "400px",
-                  height: "auto",
-                  p: 2,
-                  alignItems: "center",
-                  borderRadius: "25px",
-                }}
-              >
-                <CardHeader title={post.gadgetname} />
+            <Link href={`/review/${post._id}`} underline="none" color="inherit">
+              <Grid item sx={{}}>
+                <Card
+                  sx={{
+                    width: "400px",
+                    height: "auto",
+                    p: 2,
+                    alignItems: "center",
+                    borderRadius: "25px",
+                    "&:hover": {
+                      border: "1px solid black",
+                      boxShadow: "0 0 10px 0 rgba(0,0,0,0.2)",
+                    },
+                  }}
+                >
+                  <CardHeader title={post.gadgetname} />
 
-                <CardContent>
-                  <Grid
-                    item
-                    xs={12}
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Typography
+                  <CardContent>
+                    <Grid
+                      item
+                      xs={12}
                       sx={{
-                        color: "black",
-                        fontSize: "15px",
-                        fontWeight: "bold",
-                        backgroundColor: "#83c5be",
-                        borderRadius: "10px",
-                        padding: "5px 10px",
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "space-between",
                       }}
                     >
-                      {post.category}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: "black",
-                        fontSize: "15px",
-                        fontWeight: "bold",
-                        backgroundColor: "#83c5be",
-                        borderRadius: "10px",
-                        padding: "5px 10px",
-                      }}
-                    >
-                      {post.model}
-                    </Typography>
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sx={{
-                      my: "15px",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        color: "black",
-                        fontSize: "16px",
-                        backgroundColor: "#EEF0F2",
-                        padding: "5px 10px",
-                      }}
-                    >
-                      {post.review.slice(0, 100)} ... <br />
-                      <Button onClick={handleOpen}>
-                        <Typography sx={{ fontSize: "16px" }}>
-                          Read More
-                        </Typography>
-                      </Button>
-                    </Typography>
-                    <Typography
-                      sx={{
-                        color: "black",
-                        fontSize: "15px",
-                        textAlign: "right",
-                        mt: "10px",
-                      }}
-                    >
-                      By{" "}
-                      <span style={{ fontWeight: "light" }}>
-                        {" "}
-                        {post.authorname}
-                      </span>
-                    </Typography>
-                  </Grid>
-                </CardContent>
-
-                <CardActions>
-                  <Grid
-                    container
-                    xs={12}
-                    sx={{
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Grid item>
-                      <Button
-                        variant="contained"
+                      <Typography
                         sx={{
-                          backgroundColor: "transparent",
-                          mr: "10px",
                           color: "black",
-                        }}
-                        onClick={() => {
-                          // "/like/:id"
-                          axios
-                            .post(
-                              "http://localhost:5000/api/post/like/" + post._id
-                            )
-                            .then((response) => {
-                              console.log(response);
-                              window.location.reload();
-                            })
-                            .catch((error) => {
-                              console.log(error);
-                            });
+                          fontSize: "15px",
+                          fontWeight: "bold",
+                          backgroundColor: "#83c5be",
+                          borderRadius: "10px",
+                          padding: "5px 10px",
                         }}
                       >
-                        <ThumbUpIcon
-                          sx={{ color: "black", fontSize: "25px" }}
-                        />{" "}
-                        {post.likes}
-                      </Button>
-                      <Button
-                        variant="contained"
+                        {post.category}
+                      </Typography>
+                      <Typography
                         sx={{
-                          backgroundColor: "transparent",
                           color: "black",
+                          fontSize: "15px",
+                          fontWeight: "bold",
+                          backgroundColor: "#83c5be",
+                          borderRadius: "10px",
+                          padding: "5px 10px",
                         }}
                       >
-                        <ChatBubbleIcon
-                          sx={{ color: "black", fontSize: "25px" }}
-                        />
-                        {post.comments.length}
-                      </Button>
-                    </Grid>
-
-                    <Grid item>
-                      <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
-                        <span style={{ color: "#F9A826" }}>₹</span>
-                        {post.price}
+                        {post.model}
                       </Typography>
                     </Grid>
-                  </Grid>
-                </CardActions>
-              </Card>
+                    <Grid
+                      item
+                      xs={12}
+                      sx={{
+                        my: "15px",
+                      }}
+                    >
+                      <Typography
+                        sx={{
+                          color: "black",
+                          fontSize: "16px",
+                          backgroundColor: "#EEF0F2",
+                          padding: "5px 10px",
+                        }}
+                      >
+                        {post.review.slice(0, 100)} ... <br />
+                        <Button onClick={handleOpen}>
+                          <Typography sx={{ fontSize: "16px" }}>
+                            Read More
+                          </Typography>
+                        </Button>
+                      </Typography>
+                      <Typography
+                        sx={{
+                          color: "black",
+                          fontSize: "15px",
+                          textAlign: "right",
+                          mt: "10px",
+                        }}
+                      >
+                        By{" "}
+                        <span style={{ fontWeight: "light" }}>
+                          {" "}
+                          {post.authorname}
+                        </span>
+                      </Typography>
+                    </Grid>
+                  </CardContent>
 
-              {/* -----------------------------Modal---------------------------------- */}
-            </Grid>
+                  <CardActions>
+                    <Grid
+                      container
+                      xs={12}
+                      sx={{
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Grid item>
+                        <Button
+                          variant="contained"
+                          onClick={() => {
+                            axios
+                              .post(
+                                "http://localhost:5000/api/post/like/" +
+                                  post._id,
+                                { email }
+                              )
+                              .then((response) => {
+                                window.location.reload();
+                                console.log(response);
+                              })
+                              .catch((error) => {
+                                console.log(error);
+                              });
+                          }}
+                          sx={{
+                            mr: "10px",
+                            color: "black",
+                            backgroundColor: "transparent",
+                          }}
+                        >
+                          <ThumbUpIcon
+                            sx={{ color: "black", fontSize: "25px" }}
+                          />
+                          {post.likedUser.length}
+                        </Button>
+
+                        <Button
+                          variant="contained"
+                          sx={{
+                            backgroundColor: "transparent",
+                            color: "black",
+                          }}
+                        >
+                          <ChatBubbleIcon
+                            sx={{ color: "black", fontSize: "25px" }}
+                          />
+                          {post.comments.length}
+                        </Button>
+                      </Grid>
+
+                      <Grid item>
+                        <Typography
+                          sx={{ fontSize: "20px", fontWeight: "bold" }}
+                        >
+                          <span style={{ color: "#F9A826" }}>₹</span>
+                          {post.price}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </CardActions>
+                </Card>
+              </Grid>
+            </Link>
           ))}
         </Grid>
         {/* -----------------------------Modal---------------------------------- */}
