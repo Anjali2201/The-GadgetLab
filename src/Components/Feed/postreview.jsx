@@ -81,7 +81,10 @@ function Postreview() {
     console.log(form_data);
 
     await axios
-      .post("http://localhost:8000/api/post/createpost", form_data)
+      .post(
+        "https://breakable-toad-buckle.cyclic.app/api/post/createpost",
+        form_data
+      )
       .then((response) => {
         console.log(response);
         modalText = "Post created successfully";

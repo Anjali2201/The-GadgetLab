@@ -74,7 +74,7 @@ function Signup() {
     if (password === cpassword) {
       await axios
         .post(
-          "https://cyan-drab-duckling.cyclic.app/api/user/signup",
+          "https://breakable-toad-buckle.cyclic.app/api/user/signup",
           form_data
         )
         .then((response) => {

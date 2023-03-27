@@ -22,7 +22,7 @@ const Feedpage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/post/getallposts")
+      .get("https://breakable-toad-buckle.cyclic.app/api/post/getallposts")
       .then((response) => setMyData(response.data.posts))
       .catch((error) => setIsError(error.message));
 
@@ -227,7 +227,8 @@ const Feedpage = () => {
                         onClick={() => {
                           axios
                             .post(
-                              "http://localhost:8000/api/post/like/" + post._id,
+                              "https://breakable-toad-buckle.cyclic.app/api/post/like/" +
+                                post._id,
                               { email }
                             )
                             .then((response) => {
