@@ -81,7 +81,7 @@ function Postreview() {
     console.log(form_data);
 
     await axios
-      .post("http://localhost:5000/api/post/newpost/", form_data)
+      .post("http://localhost:8000/api/post/createpost", form_data)
       .then((response) => {
         console.log(response);
         modalText = "Post created successfully";

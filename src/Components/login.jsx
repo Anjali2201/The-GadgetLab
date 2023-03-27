@@ -104,7 +104,7 @@ class Signin extends Component {
     };
     console.log(newstate);
     axios
-      .post("http://localhost:5000/api/user/login", newstate)
+      .post("https://cyan-drab-duckling.cyclic.app/api/user/login", newstate)
       .then((response) => {
         console.log(response.data.user.name);
         const cookieState = {

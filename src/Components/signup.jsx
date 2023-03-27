@@ -73,7 +73,10 @@ function Signup() {
 
     if (password === cpassword) {
       await axios
-        .post("http://localhost:5000/api/user/signup/", form_data)
+        .post(
+          "https://cyan-drab-duckling.cyclic.app/api/user/signup",
+          form_data
+        )
         .then((response) => {
           console.log(response);
           modalText = "Registered Successfully";

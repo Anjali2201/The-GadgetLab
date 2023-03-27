@@ -22,7 +22,7 @@ const Feedpage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/post/")
+      .get("http://localhost:8000/api/post/getallposts")
       .then((response) => setMyData(response.data.posts))
       .catch((error) => setIsError(error.message));
 
@@ -116,163 +116,164 @@ const Feedpage = () => {
           }}
         >
           {post.map((post) => (
-            <Link href={`/review/${post._id}`} underline="none" color="inherit">
-              <Grid item sx={{}}>
-                <Card
-                  sx={{
-                    width: "400px",
-                    height: "auto",
-                    p: 2,
-                    alignItems: "center",
-                    borderRadius: "25px",
-                    "&:hover": {
-                      border: "1px solid black",
-                      boxShadow: "0 0 10px 0 rgba(0,0,0,0.2)",
-                    },
-                  }}
-                >
-                  <CardHeader title={post.gadgetname} />
+            <Grid item sx={{}}>
+              <Card
+                sx={{
+                  width: "400px",
+                  height: "auto",
+                  p: 2,
+                  alignItems: "center",
+                  borderRadius: "25px",
+                  "&:hover": {
+                    border: "1px solid black",
+                    boxShadow: "0 0 10px 0 rgba(0,0,0,0.2)",
+                  },
+                }}
+              >
+                <CardHeader title={post.gadgetname} />
 
-                  <CardContent>
-                    <Grid
-                      item
-                      xs={12}
+                <CardContent>
+                  <Grid
+                    item
+                    xs={12}
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Typography
                       sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
+                        color: "black",
+                        fontSize: "15px",
+                        fontWeight: "bold",
+                        backgroundColor: "#83c5be",
+                        borderRadius: "10px",
+                        padding: "5px 10px",
                       }}
                     >
-                      <Typography
-                        sx={{
-                          color: "black",
-                          fontSize: "15px",
-                          fontWeight: "bold",
-                          backgroundColor: "#83c5be",
-                          borderRadius: "10px",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {post.category}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: "black",
-                          fontSize: "15px",
-                          fontWeight: "bold",
-                          backgroundColor: "#83c5be",
-                          borderRadius: "10px",
-                          padding: "5px 10px",
-                        }}
-                      >
-                        {post.model}
-                      </Typography>
-                    </Grid>
-                    <Grid
-                      item
-                      xs={12}
+                      {post.category}
+                    </Typography>
+                    <Typography
                       sx={{
-                        my: "15px",
+                        color: "black",
+                        fontSize: "15px",
+                        fontWeight: "bold",
+                        backgroundColor: "#83c5be",
+                        borderRadius: "10px",
+                        padding: "5px 10px",
                       }}
                     >
-                      <Typography
-                        sx={{
-                          color: "black",
-                          fontSize: "16px",
-                          backgroundColor: "#EEF0F2",
-                          padding: "5px 10px",
-                        }}
+                      {post.model}
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sx={{
+                      my: "15px",
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        color: "black",
+                        fontSize: "16px",
+                        backgroundColor: "#EEF0F2",
+                        padding: "5px 10px",
+                      }}
+                    >
+                      {post.review.slice(0, 100)} ... <br />
+                      <Link
+                        href={`/review/${post._id}`}
+                        underline="none"
+                        color="inherit"
                       >
-                        {post.review.slice(0, 100)} ... <br />
                         <Button onClick={handleOpen}>
                           <Typography sx={{ fontSize: "16px" }}>
                             Read More
                           </Typography>
                         </Button>
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: "black",
-                          fontSize: "15px",
-                          textAlign: "right",
-                          mt: "10px",
-                        }}
-                      >
-                        By{" "}
-                        <span style={{ fontWeight: "light" }}>
-                          {" "}
-                          {post.authorname}
-                        </span>
-                      </Typography>
-                    </Grid>
-                  </CardContent>
-
-                  <CardActions>
-                    <Grid
-                      container
-                      xs={12}
+                      </Link>
+                    </Typography>
+                    <Typography
                       sx={{
-                        justifyContent: "space-between",
-                        alignItems: "center",
+                        color: "black",
+                        fontSize: "15px",
+                        textAlign: "right",
+                        mt: "10px",
                       }}
                     >
-                      <Grid item>
-                        <Button
-                          variant="contained"
-                          onClick={() => {
-                            axios
-                              .post(
-                                "http://localhost:5000/api/post/like/" +
-                                  post._id,
-                                { email }
-                              )
-                              .then((response) => {
-                                window.location.reload();
-                                console.log(response);
-                              })
-                              .catch((error) => {
-                                console.log(error);
-                              });
-                          }}
-                          sx={{
-                            mr: "10px",
-                            color: "black",
-                            backgroundColor: "transparent",
-                          }}
-                        >
-                          <ThumbUpIcon
-                            sx={{ color: "black", fontSize: "25px" }}
-                          />
-                          {post.likedUser.length}
-                        </Button>
+                      By{" "}
+                      <span style={{ fontWeight: "light" }}>
+                        {" "}
+                        {post.authorname}
+                      </span>
+                    </Typography>
+                  </Grid>
+                </CardContent>
 
-                        <Button
-                          variant="contained"
-                          sx={{
-                            backgroundColor: "transparent",
-                            color: "black",
-                          }}
-                        >
-                          <ChatBubbleIcon
-                            sx={{ color: "black", fontSize: "25px" }}
-                          />
-                          {post.comments.length}
-                        </Button>
-                      </Grid>
+                <CardActions>
+                  <Grid
+                    container
+                    xs={12}
+                    sx={{
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Grid item>
+                      <Button
+                        variant="contained"
+                        onClick={() => {
+                          axios
+                            .post(
+                              "http://localhost:8000/api/post/like/" + post._id,
+                              { email }
+                            )
+                            .then((response) => {
+                              window.location.reload();
+                              console.log(response);
+                            })
+                            .catch((error) => {
+                              console.log(error);
+                            });
+                        }}
+                        sx={{
+                          mr: "10px",
+                          color: "black",
+                          backgroundColor: "transparent",
+                        }}
+                      >
+                        <ThumbUpIcon
+                          sx={{ color: "black", fontSize: "25px" }}
+                        />
+                        {post.likedUser.length}
+                      </Button>
 
-                      <Grid item>
-                        <Typography
-                          sx={{ fontSize: "20px", fontWeight: "bold" }}
-                        >
-                          <span style={{ color: "#F9A826" }}>₹</span>
-                          {post.price}
-                        </Typography>
-                      </Grid>
+                      <Button
+                        variant="contained"
+                        sx={{
+                          backgroundColor: "transparent",
+                          color: "black",
+                        }}
+                      >
+                        <ChatBubbleIcon
+                          sx={{ color: "black", fontSize: "25px" }}
+                        />
+                        {post.comments.length}
+                      </Button>
                     </Grid>
-                  </CardActions>
-                </Card>
-              </Grid>
-            </Link>
+
+                    <Grid item>
+                      <Typography sx={{ fontSize: "20px", fontWeight: "bold" }}>
+                        <span style={{ color: "#F9A826" }}>₹</span>
+                        {post.price}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </CardActions>
+              </Card>
+            </Grid>
           ))}
         </Grid>
         {/* -----------------------------Modal---------------------------------- */}
