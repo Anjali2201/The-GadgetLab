@@ -1,6 +1,5 @@
 import React from "react";
-import { Divider, Grid, Paper, Typography } from "@mui/material";
-import Stack from "@mui/material/Stack";
+import { Divider, Grid, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import "../../index.css";
 import Lottie from "react-lottie";
