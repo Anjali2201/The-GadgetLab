@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-import ChipsArray from "./chips";
+// import ChipsArray from "./chips";
 import getCookie from "../../hooks/getCookie";
 
 let token = getCookie("login");
@@ -18,7 +18,7 @@ if (token) {
 
 const Feedpage = () => {
   const [post, setMyData] = useState([]);
-  const [setIsError] = useState("");
+  const [error, setIsError] = useState("");
 
   useEffect(() => {
     axios
@@ -29,8 +29,8 @@ const Feedpage = () => {
     console.log(post);
   }, []);
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  // const [open, setOpen] = React.useState(false);
+  // const handleOpen = () => setOpen(true);
 
   return (
     <div>
@@ -196,7 +196,7 @@ const Feedpage = () => {
                         underline="none"
                         color="inherit"
                       >
-                        <Button onClick={handleOpen}>
+                        <Button>
                           <Typography sx={{ fontSize: "16px" }}>
                             Read More
                           </Typography>
