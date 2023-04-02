@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import gif from "../Assets/gif.gif";
+import { Link } from "react-router-dom";
 const LandingPage = () => {
   return (
     <div>
@@ -42,20 +43,27 @@ const LandingPage = () => {
             comparisons, and recommendations."
           </Typography>
 
-          <Button
-            sx={{
-              mt: "20px",
-              backgroundColor: "#F9A826",
-              color: "black",
-              fontSize: "1rem",
-              fontWeight: "bold",
-              letterSpacing: "0.1rem",
-              borderRadius: "10px",
-              padding: "10px 20px",
-            }}
-          >
-            Explore
-          </Button>
+          <Link to="/feed" style={{ textDecoration: "none" }}>
+            <Button
+              sx={{
+                mt: "20px",
+                backgroundColor: "#F9A826",
+                color: "black",
+                fontSize: "1rem",
+                fontWeight: "bold",
+                letterSpacing: "0.1rem",
+                borderRadius: "10px",
+                padding: "10px 20px",
+                "&:hover": {
+                  backgroundColor: "#fff",
+                  color: "black",
+                  border: "1px solid #F9A826",
+                },
+              }}
+            >
+              Explore
+            </Button>
+          </Link>
         </Grid>
 
         <Grid

@@ -39,8 +39,6 @@ const Feedpage = () => {
         xs={12}
         sx={{
           justifyContent: "center",
-          p: 10,
-          // backgroundColor: "#EEF0F2",
           height: "auto",
         }}
       >
@@ -51,16 +49,17 @@ const Feedpage = () => {
           xs={12}
           sx={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "center",
             alignItems: "center",
             height: "auto",
-            py: 5,
+            mt: "150px",
+            mb: "50px",
           }}
         >
           <Typography variant="h4" sx={{ fontWeight: "bold" }}>
             All Reviews
           </Typography>
-          <ChipsArray />
+          {/* <ChipsArray /> */}
         </Grid>
 
         {/* ------------------------------Left Bar---------------------------------- */}
@@ -73,19 +72,19 @@ const Feedpage = () => {
             borderRadius: "10px",
             alignItems: "center",
             justifyContent: "center",
-            // border: "1px solid black",
           }}
         >
           <Link href="/newreview" underline="none" color="inherit">
             <Button
               sx={{
                 color: "black",
-                boxShadow: "none",
-                fontSize: "20px",
+                fontSize: "15px",
                 fontWeight: "bold",
                 backgroundColor: "#F9A826",
                 borderRadius: "10px",
                 padding: "10px 20px",
+                ml: "25%",
+                mb: "10%",
                 "&:hover": {
                   border: "1px solid black",
                 },
@@ -98,8 +97,8 @@ const Feedpage = () => {
         {/* ------------------------------Right bar---------------------------------- */}
         <Grid
           item
-          xs={12}
-          sm={12}
+          xs={11}
+          sm={11}
           md={10}
           sx={{
             height: "auto",
@@ -111,15 +110,24 @@ const Feedpage = () => {
             justifyContent: "center",
             backgroundColor: "#EEF0F2",
             alignItems: "center",
-            p: 5,
             // border: "1px solid black",
           }}
         >
           {post.map((post) => (
-            <Grid item sx={{}}>
+            <Grid
+              item
+              sx={{
+                m: 2,
+              }}
+            >
               <Card
                 sx={{
-                  width: "400px",
+                  width: {
+                    xs: "auto",
+                    sm: "auto",
+                    md: "300px",
+                    lg: "400px",
+                  },
                   height: "auto",
                   p: 2,
                   alignItems: "center",

@@ -42,7 +42,7 @@ const textfield = {
 };
 const btn = {
   height: 70,
-  width: 190,
+  width: "auto",
   margin: "5px",
   border: "none",
   fontSize: 12,
@@ -141,15 +141,29 @@ class Signin extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <Grid container xs={12}>
+      <Grid
+        container
+        xs={12}
+        sx={{
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {/* ----------- left grid---------------- */}
         <Grid
           item
-          xs={6}
+          xs={5}
           sx={{
-            display: "flex",
+            display: {
+              xs: "none",
+              sm: "none",
+              md: "none",
+              lg: "flex",
+            },
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "#EEF0F2",
+            backgroundColor: "#ffffff",
             height: "100vh",
             p: 4,
           }}
@@ -162,25 +176,24 @@ class Signin extends Component {
             Explore the world of Technologies <br />
           </Typography>
         </Grid>
+
+        {/* ------------------------------------------------ */}
+
         <Grid
           item
-          xs={6}
+          xs={12}
+          sm={12}
+          md={12}
+          lg={5}
           sx={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "#EEF0F2",
+            backgroundColor: "#ffffff",
+            p: 5,
           }}
         >
-          <Paper
-            style={{
-              padding: 50,
-              margin: "10px",
-              height: "70%",
-              width: "70%",
-              borderRadius: "10px",
-            }}
-          >
+          <Grid item>
             <Typography
               variant="h4"
               sx={{
@@ -250,12 +263,12 @@ class Signin extends Component {
               </Button>
               <Link
                 style={{ textDecoration: "None", color: "black" }}
-                href={`/signup`}
+                href="/register"
               >
                 <Button sx={btn}>New User? Sign Up</Button>
               </Link>
             </ButtonGroup>
-          </Paper>
+          </Grid>
         </Grid>
 
         <Modal

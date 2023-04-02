@@ -109,16 +109,6 @@ export default function Appbar(props) {
           </Link>
         ))}
       </List>
-      {/* <FormControlLabel
-        sx={{
-          m: 2,
-          bottom: 0,
-          position: "absolute",
-          left: "50%",
-          transform: "translateX(-50%)",
-        }}
-        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-      /> */}
     </Box>
   );
 
@@ -186,33 +176,44 @@ export default function Appbar(props) {
             container
             sx={{
               alignItems: "center",
-              justifyContent: "left",
-              display: { xs: "none", sm: "none", md: "block" },
+              justifyContent: "space-between",
+              display: { xs: "none", sm: "none", md: "flex" },
             }}
           >
-            <img src={logo} alt="logo" style={{ height: "50px" }} />
-            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-              <Typography
-                sx={{
-                  fontSize: "1rem",
-                  fontWeight: "bold",
-                  letterSpacing: "0.1rem",
-                  ml: 2,
-                  color: "black",
-                  display: {
-                    xs: "none",
-                    sm: "none",
-                    md: "block",
-                    lg: "block",
-                  },
-                }}
-              >
-                The GadgetLab
-              </Typography>
-            </Link>
+            <>
+              <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+                <img src={logo} alt="logo" style={{ height: "50px" }} />
+              </Link>
+            </>
+
+            {!token ? (
+              <ButtonGroup variant="text">
+                {buttons.map((button) => (
+                  <Link
+                    to={`/${button.toLowerCase()}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <Button sx={btn}>{button}</Button>
+                  </Link>
+                ))}
+              </ButtonGroup>
+            ) : (
+              <ButtonGroup variant="text">
+                <Link
+                  to="/feed"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <Button sx={btn}>Feed</Button>
+                </Link>
+                <Button sx={btn} onClick={logout}>
+                  Logout
+                </Button>
+                <Button sx={btn}>{username}</Button>
+              </ButtonGroup>
+            )}
           </Grid>
 
-          <Grid
+          {/* <Grid
             container
             sx={{
               justifyContent: "flex-end",
@@ -244,7 +245,7 @@ export default function Appbar(props) {
                 <Button sx={btn}>{username}</Button>
               </ButtonGroup>
             )}
-          </Grid>
+          </Grid> */}
           <Box component="nav">
             <Drawer
               container={container}

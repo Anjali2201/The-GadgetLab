@@ -30,9 +30,6 @@ const style = {
 };
 
 const textfield = {
-  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-    borderColor: "white",
-  },
   m: 1,
 };
 
@@ -102,165 +99,155 @@ function Postreview() {
   };
 
   return (
-    <div style={{ height: "100vh" }}>
-      <Grid container xs={12}>
-        <Grid
-          item
-          xs={6}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundImage: "linear-gradient(#2d2e33, #212225)",
-            height: "100vh",
-            p: 4,
-          }}
-        >
+    // <div style={{ height: "100vh" }}>
+    <Grid
+      container
+      xs={12}
+      sx={{
+        mt: "50px",
+        height: "auto",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Grid
+        item
+        xs={6}
+        sx={{
+          display: {
+            xs: "none",
+            sm: "none",
+            md: "none",
+            lg: "flex",
+          },
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#ffffff",
+          height: "100vh",
+          p: 4,
+        }}
+      >
+        <Typography variant="h3" style={{ color: "black", textAlign: "right" }}>
+          Post Review
+          <br />
+          Let others Know <br />
+        </Typography>
+      </Grid>
+
+      {/* ------------------------------------ */}
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={12}
+        lg={5}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#ffffff",
+          p: 5,
+        }}
+      >
+        <Grid item>
           <Typography
-            variant="h3"
-            style={{ color: "white", textAlign: "right" }}
-          >
-            Join Us! <br />
-            Explore the world of Technologies <br />
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={6}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundImage: "linear-gradient(#2d2e33, #212225)",
-          }}
-        >
-          <Paper
-            style={{
-              padding: 20,
-              margin: "10px",
-              height: "auto",
-              width: "40%",
-              backgroundColor: "#212225",
+            variant="h5"
+            sx={{
+              color: "black",
+              fontWeight: "bold",
+              textAlign: "center",
+              m: 2,
             }}
           >
-            <Typography
-              variant="h4"
-              sx={{
-                color: "white",
-                fontWeight: "bold",
-                textAlign: "center",
-                m: 2,
-              }}
-            >
-              Post a new review
-            </Typography>
-            <form ref={form} onSubmit={Createpost}>
-              <TextField
-                type="text"
-                name="gadgetname"
-                fullWidth
-                label={
-                  <Typography style={{ color: "white" }}>
-                    Gadget Name
-                  </Typography>
-                }
-                sx={textfield}
-              />
-              <TextField
-                type="text"
-                name="category"
-                fullWidth
-                label={
-                  <Typography style={{ color: "white" }}>
-                    Enter category
-                  </Typography>
-                }
-                placeholder="Enter category"
-                sx={textfield}
-              />
-              <TextField
-                type="text"
-                name="model"
-                fullWidth
-                label={
-                  <Typography style={{ color: "white" }}>
-                    Enter model
-                  </Typography>
-                }
-                placeholder="Enter model"
-                sx={textfield}
-              />
+            Post a new review
+          </Typography>
+          <form ref={form} onSubmit={Createpost}>
+            <TextField
+              type="text"
+              name="gadgetname"
+              fullWidth
+              sx={textfield}
+              label="Gadget Name"
+              placeholder="Enter Gadget name"
+            />
+            <TextField
+              type="text"
+              name="category"
+              fullWidth
+              label="Enter category"
+              placeholder="Enter category"
+              sx={textfield}
+            />
+            <TextField
+              type="text"
+              name="model"
+              fullWidth
+              label="Enter model"
+              placeholder="Enter model"
+              sx={textfield}
+            />
 
-              <TextField
-                type="text"
-                name="price"
-                fullWidth
-                label={
-                  <Typography style={{ color: "white" }}>
-                    Enter price
-                  </Typography>
-                }
-                placeholder="Enter link"
-                sx={textfield}
-              />
-              <TextField
-                type="text"
-                name="review"
-                fullWidth
-                label={
-                  <Typography style={{ color: "white" }}>
-                    Enter review
-                  </Typography>
-                }
-                placeholder="Enter review"
-                sx={textfield}
-              />
-              <TextField
-                type="text"
-                name="rate"
-                fullWidth
-                label={
-                  <Typography style={{ color: "white" }}>Enter rate</Typography>
-                }
-                placeholder="Enter rate"
-                sx={textfield}
-              />
-              <Button
-                style={buttons}
-                type="submit"
-                variant="contained"
-                color="primary"
-              >
-                Post
-              </Button>
-            </form>
-          </Paper>
+            <TextField
+              type="text"
+              name="price"
+              fullWidth
+              label="Enter price"
+              placeholder="Enter link"
+              sx={textfield}
+            />
+            <TextField
+              type="text"
+              name="review"
+              fullWidth
+              label="Enter review"
+              placeholder="Enter review"
+              sx={textfield}
+            />
+            <TextField
+              type="text"
+              name="rate"
+              fullWidth
+              label="Enter rate"
+              placeholder="Enter rate"
+              sx={textfield}
+            />
+            <Button
+              style={buttons}
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
+              Post
+            </Button>
+          </form>
         </Grid>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              {modalText}
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              <Button
-                onClick={navigation}
-                style={buttons}
-                variant="contained"
-                color="primary"
-              >
-                {message}
-              </Button>
-              {/* </Link> */}
-            </Typography>
-          </Box>
-        </Modal>
       </Grid>
-    </div>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            {modalText}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <Button
+              onClick={navigation}
+              style={buttons}
+              variant="contained"
+              color="primary"
+            >
+              {message}
+            </Button>
+            {/* </Link> */}
+          </Typography>
+        </Box>
+      </Modal>
+    </Grid>
+    // </div>
   );
 }
 

@@ -99,159 +99,163 @@ function Signup() {
   };
 
   return (
-    <div style={{ height: "100vh" }}>
-      <Grid container xs={12}>
-        <Grid
-          item
-          xs={6}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#EEF0F2",
-            height: "100vh",
-            p: 4,
-          }}
-        >
+    <Grid
+      container
+      xs={12}
+      sx={{
+        height: "100vh",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {/* -------------------------left grid------------------- */}
+      <Grid
+        item
+        xs={5}
+        sx={{
+          display: {
+            xs: "none",
+            sm: "none",
+            md: "none",
+            lg: "flex",
+          },
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#ffffff",
+          height: "100vh",
+          p: 4,
+        }}
+      >
+        <Typography variant="h3" style={{ color: "black", textAlign: "right" }}>
+          Join Us! <br />
+          Explore the world of Technologies <br />
+        </Typography>
+      </Grid>
+
+      {/* ------------------------------------------------------ */}
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={12}
+        lg={5}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#ffffff",
+          p: 5,
+        }}
+      >
+        <Grid item>
           <Typography
-            variant="h3"
-            style={{ color: "black", textAlign: "right" }}
-          >
-            Join Us! <br />
-            Explore the world of Technologies <br />
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          xs={6}
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#EEF0F2",
-          }}
-        >
-          <Paper
-            style={{
-              padding: 50,
-              margin: "50px",
-              height: "70%",
-              width: "70%",
-              borderRadius: 10,
+            variant="h4"
+            sx={{
+              color: "black",
+              fontWeight: "bold",
+              textAlign: "center",
+              m: 2,
             }}
           >
-            <Typography
-              variant="h4"
+            Sign Up
+          </Typography>
+          <form ref={form} onSubmit={RegisterUser}>
+            <TextField
+              style={text}
+              required
+              name="name"
+              fullWidth
+              label={
+                <Typography style={{ color: "black" }}>Full Name</Typography>
+              }
+              sx={textfield}
+            />
+
+            <TextField
+              style={text}
+              required
+              name="email"
+              fullWidth
+              label={
+                <Typography style={{ color: "black" }}>
+                  Email Address
+                </Typography>
+              }
+              sx={textfield}
+            />
+            <TextField
+              style={text}
+              required
+              name="password"
+              type="password"
+              fullWidth
+              label={
+                <Typography style={{ color: "black" }}>Password</Typography>
+              }
+              sx={textfield}
+            />
+            <TextField
+              style={text}
+              required
+              name="confirm"
+              type="password"
+              fullWidth
+              label={
+                <Typography style={{ color: "black" }}>
+                  Confirm Password
+                </Typography>
+              }
+              sx={textfield}
+            />
+
+            <Button
               sx={{
-                color: "black",
-                fontWeight: "bold",
-                textAlign: "center",
-                m: 2,
-              }}
-            >
-              Sign Up
-            </Typography>
-            <form ref={form} onSubmit={RegisterUser}>
-              <TextField
-                style={text}
-                required
-                name="name"
-                fullWidth
-                label={
-                  <Typography style={{ color: "black" }}>Full Name</Typography>
-                }
-                sx={textfield}
-              />
-
-              <TextField
-                style={text}
-                required
-                name="email"
-                fullWidth
-                label={
-                  <Typography style={{ color: "black" }}>
-                    Email Address
-                  </Typography>
-                }
-                sx={textfield}
-              />
-              <TextField
-                style={text}
-                required
-                name="password"
-                type="password"
-                fullWidth
-                label={
-                  <Typography style={{ color: "black" }}>Password</Typography>
-                }
-                sx={textfield}
-              />
-              <TextField
-                style={text}
-                required
-                name="confirm"
-                type="password"
-                fullWidth
-                label={
-                  <Typography style={{ color: "black" }}>
-                    Confirm Password
-                  </Typography>
-                }
-                sx={textfield}
-              />
-
-              <Button
-                sx={{
-                  height: 70,
-                  width: 190,
-                  margin: "5px",
+                margin: "8px",
+                height: 50,
+                backgroundColor: "#F9A826",
+                "&:hover": {
+                  border: "1px solid black",
                   backgroundColor: "#F9A826",
-                  border: "none",
-                  fontSize: 15,
-                  color: "black",
-                  "&:hover": {
-                    border: "1px solid black",
-                    backgroundColor: "#F9A826",
-                  },
-                }}
-                type="submit"
-                variant="contained"
-                color="primary"
-              >
-                Sign up
-              </Button>
-            </form>
-          </Paper>
+                },
+              }}
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
+              Sign up
+            </Button>
+          </form>
         </Grid>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              {modalText}
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              {/* <Link
+      </Grid>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            {modalText}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            {/* <Link
                 style={{ textDecoration: "None", color: "black" }}
                 to={lastpage}
               > */}
-              <Button
-                onClick={navigation}
-                style={buttons}
-                variant="contained"
-                color="primary"
-              >
-                {message}
-              </Button>
-              {/* </Link> */}
-            </Typography>
-          </Box>
-        </Modal>
-      </Grid>
-    </div>
+            <Button
+              onClick={navigation}
+              style={buttons}
+              variant="contained"
+              color="primary"
+            >
+              {message}
+            </Button>
+            {/* </Link> */}
+          </Typography>
+        </Box>
+      </Modal>
+    </Grid>
   );
 }
 
