@@ -10,7 +10,7 @@ export default function Footer() {
       container
       xs={12}
       sx={{
-        backgroundColor: "#EEF0F2",
+        backgroundColor: "#ffffff",
         color: "white",
         justifyContent: "center",
       }}

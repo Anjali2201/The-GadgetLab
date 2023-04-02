@@ -1,10 +1,21 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { ButtonGroup, Grid } from "@mui/material";
+import {
+  ButtonGroup,
+  Grid,
+  Typography,
+  Button,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Box,
+  Divider,
+  Drawer,
+} from "@mui/material";
 import { Link } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
 import getCookie from "../hooks/getCookie";
 import removeCookie from "../hooks/removeCookie";
 import logo from "./Assets/logo.png";
@@ -18,6 +29,41 @@ const btn = {
   "&:hover": {
     backgroundColor: "#F9A826",
     color: "black",
+  },
+};
+const styles = {
+  AppBar: {
+    backgroundColor: "#E5E5E5",
+    width: "100%",
+    height: "auto",
+    py: "1px",
+  },
+  logo: {
+    width: "50px",
+    height: "50px",
+    px: 1,
+  },
+  menutext: {
+    fontStyle: "normal",
+    fontWeight: 500,
+    fontSize: "18px",
+    textTransform: "none",
+    fontFamily: "Figtree",
+    // lineHeight: "29px",
+    color: "#000000",
+  },
+  btn: {
+    my: 2,
+    color: "#F9A826",
+    mx: 1,
+    width: "100%",
+
+    "&:hover": {
+      backgroundColor: "#E5E5E566",
+      color: "black",
+      borderBottom: "3px solid #F9A826",
+      borderRadius: "0px",
+    },
   },
 };
 
@@ -36,81 +82,192 @@ const logout = () => {
     window.location.reload();
   }
 };
-export default function Appbar() {
-  return (
-    <AppBar
-      sx={{
-        backgroundColor: "transparent",
-        height: "180px",
-        boxShadow: "none",
-      }}
-    >
-      <Toolbar
+export default function Appbar(props) {
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", m: 2 }}>
+      <Link to="/" style={{ textDecoration: "none", cursor: "pointer" }}>
+        <img src={logo} alt="logo" style={styles.logo} />
+      </Link>
+      <Divider />
+      <List>
+        {buttons.map((item) => (
+          <Link to={`/${item}`} style={{ textDecoration: "none" }}>
+            <ListItem key={item} disablePadding>
+              <ListItemButton sx={{ textAlign: "center" }}>
+                <ListItemText>
+                  <Typography sx={styles.menutext}>{item}</Typography>
+                </ListItemText>
+              </ListItemButton>
+            </ListItem>
+          </Link>
+        ))}
+      </List>
+      {/* <FormControlLabel
         sx={{
           m: 2,
-          backgroundColor: "#FAFAFF",
-          borderRadius: "10px",
-          py: 1,
-          boxShadow: "1px 1px 1px 1px #DADDD8",
+          bottom: 0,
+          position: "absolute",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+      /> */}
+    </Box>
+  );
+
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
+
+  return (
+    <Grid sx={{ display: "flex" }}>
+      <AppBar
+        component="nav"
+        position="fixed"
+        sx={{
+          backgroundColor: "transparent",
+          height: "180px",
+          boxShadow: "none",
         }}
       >
-        <Grid
-          container
+        <Toolbar
           sx={{
-            alignItems: "center",
-            justifyContent: "left",
+            m: 2,
+            backgroundColor: "#FAFAFF",
+            borderRadius: "10px",
+            py: 1,
+            boxShadow: "1px 1px 1px 1px #DADDD8",
           }}
         >
-          <img src={logo} alt="logo" style={{ height: "50px" }} />
-          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
-            <Typography
+          {/* Drawer for Mobile View */}
+
+          <Button
+            onClick={handleDrawerToggle}
+            sx={{
+              flexGrow: 1,
+              display: {
+                xs: "flex",
+                sm: "flex",
+                md: "none",
+                lg: "none",
+                xl: "none",
+              },
+              color: "black",
+            }}
+          >
+            <Grid container xs={12}>
+              <Grid item xs={1}>
+                <MenuIcon />
+              </Grid>
+              <Grid xs={11}>
+                <Typography
+                  sx={{
+                    color: "black",
+                    fontWeight: 600,
+                    width: "auto",
+                  }}
+                >
+                  The Gadget
+                  <span style={{ color: "#F9A826" }}>Lab </span>
+                </Typography>
+              </Grid>
+            </Grid>
+          </Button>
+
+          {/* ------------ Desktop -------------- */}
+
+          <Grid
+            container
+            sx={{
+              alignItems: "center",
+              justifyContent: "left",
+              display: { xs: "none", sm: "none", md: "block" },
+            }}
+          >
+            <img src={logo} alt="logo" style={{ height: "50px" }} />
+            <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+              <Typography
+                sx={{
+                  fontSize: "1rem",
+                  fontWeight: "bold",
+                  letterSpacing: "0.1rem",
+                  ml: 2,
+                  color: "black",
+                  display: {
+                    xs: "none",
+                    sm: "none",
+                    md: "block",
+                    lg: "block",
+                  },
+                }}
+              >
+                The GadgetLab
+              </Typography>
+            </Link>
+          </Grid>
+
+          <Grid
+            container
+            sx={{
+              justifyContent: "flex-end",
+              display: { xs: "none", sm: "none", md: "block" },
+            }}
+          >
+            {!token ? (
+              <ButtonGroup variant="text">
+                {buttons.map((button) => (
+                  <Link
+                    to={`/${button.toLowerCase()}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <Button sx={btn}>{button}</Button>
+                  </Link>
+                ))}
+              </ButtonGroup>
+            ) : (
+              <ButtonGroup variant="text">
+                <Link
+                  to="/feed"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <Button sx={btn}>Feed</Button>
+                </Link>
+                <Button sx={btn} onClick={logout}>
+                  Logout
+                </Button>
+                <Button sx={btn}>{username}</Button>
+              </ButtonGroup>
+            )}
+          </Grid>
+          <Box component="nav">
+            <Drawer
+              container={container}
+              variant="temporary"
+              open={mobileOpen}
+              onClose={handleDrawerToggle}
+              ModalProps={{
+                keepMounted: true, // Better open performance on mobile.
+              }}
               sx={{
-                fontSize: "1rem",
-                fontWeight: "bold",
-                letterSpacing: "0.1rem",
-                ml: 2,
-                color: "black",
-                display: {
-                  xs: "none",
-                  sm: "none",
-                  md: "block",
-                  lg: "block",
+                display: { xs: "block", sm: "block" },
+
+                "& .MuiDrawer-paper": {
+                  boxSizing: "border-box",
+                  width: 240,
                 },
               }}
             >
-              Gadget Reviewer
-            </Typography>
-          </Link>
-        </Grid>
-
-        <Grid container sx={{ justifyContent: "flex-end" }}>
-          {!token ? (
-            <ButtonGroup variant="text">
-              {buttons.map((button) => (
-                <Link
-                  to={`/${button.toLowerCase()}`}
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Button sx={btn}>{button}</Button>
-                </Link>
-              ))}
-            </ButtonGroup>
-          ) : (
-            <ButtonGroup variant="text">
-              <Link
-                to="/feed"
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                <Button sx={btn}>Feed</Button>
-              </Link>
-              <Button sx={btn} onClick={logout}>
-                Logout
-              </Button>
-              <Button sx={btn}>{username}</Button>
-            </ButtonGroup>
-          )}
-        </Grid>
-      </Toolbar>
-    </AppBar>
+              {drawer}
+            </Drawer>
+          </Box>
+        </Toolbar>
+      </AppBar>
+    </Grid>
   );
 }
