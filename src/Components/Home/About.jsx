@@ -1,6 +1,28 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
+import MobileFriendlyIcon from "@mui/icons-material/MobileFriendly";
+import GradeIcon from "@mui/icons-material/Grade";
+import GradingIcon from "@mui/icons-material/Grading";
+import CompareIcon from "@mui/icons-material/Compare";
+const styles = {
+  features: {
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "column",
+    height: "auto",
+    width: "auto",
+    p: 2,
+    borderRadius: "25px",
+    boxShadow: "0 0 10px 0 rgba(0,0,0,0.2)",
+  },
 
+  text: {
+    textAlign: "center",
+    width: "80%",
+    mt: 2,
+  },
+};
 const About = () => {
   return (
     <div>
@@ -15,106 +37,88 @@ const About = () => {
           my: 3,
         }}
       >
-        {/* Item 1 */}
+        {/* Items */}
         <Grid
           item
           xs={10}
           sx={{
-            py: 2,
+            justifyContent: "center",
+            alignItems: "center",
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "repeat(1, 1fr)",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(2, 1fr)",
+            },
+            gap: "2rem",
           }}
         >
-          <Typography
-            sx={{
-              color: "black",
-              textAlign: "right",
-              fontWeight: "bold",
-              fontSize: "1.5rem",
-            }}
-          >
-            Confused about which gadget to buy? 😕
-          </Typography>
+          {/* 1st item */}
+          <Grid item sx={styles.features}>
+            <GradingIcon
+              sx={{
+                fontSize: 80,
+                color: "#457b9d",
+              }}
+            />
+            <Typography
+              sx={{
+                color: "#000",
+                fontWeight: "bold",
+              }}
+            >
+              {" "}
+              User Reviews
+            </Typography>
+            <Typography sx={styles.text}>
+              Post own reviews of gadgets you have tried and tested
+            </Typography>
+          </Grid>
 
-          <Typography
-            sx={{
-              color: "black",
-              textAlign: "right",
-              fontSize: "1rem",
-              letterSpacing: "0.1rem",
-              mt: "20px",
-            }}
-          >
-            We are here to help you. <br />
-            Find the best gadgets for your needs. <br />
-            Read reviews from other users. <br />
-          </Typography>
-        </Grid>
+          {/* 2nd item */}
+          <Grid item sx={styles.features}>
+            <GradeIcon
+              sx={{
+                fontSize: 80,
+                color: "#ffb703",
+              }}
+            />
+            <Typography sx={{ color: "#000", fontWeight: "bold" }}>
+              {" "}
+              Ratings
+            </Typography>
 
-        {/* Item 2 */}
-        <Grid
-          item
-          xs={10}
-          sx={{
-            py: 2,
-          }}
-        >
-          <Typography
-            sx={{
-              color: "black",
-              textAlign: "left",
-              fontWeight: "bold",
-              fontSize: "1.5rem",
-            }}
-          >
-            Help others make the right choice. 😊
-          </Typography>
+            <Typography sx={styles.text}>
+              Quickly identify which products are worth time and money.
+            </Typography>
+          </Grid>
 
-          <Typography
-            sx={{
-              color: "black",
-              textAlign: "left",
-              fontSize: "1rem",
-              letterSpacing: "0.1rem",
-              mt: "20px",
-            }}
-          >
-            Share your experience with others. <br />
-            Help others make the right choice. <br />
-            Write a review for a gadget you have used.
-          </Typography>
-        </Grid>
+          {/* 3rd item */}
+          <Grid item sx={styles.features}>
+            <CompareIcon sx={{ fontSize: 80, color: "#2952e3" }} />
+            <Typography sx={{ color: "#000", fontWeight: "bold" }}>
+              {" "}
+              Compare
+            </Typography>
 
-        {/* Item 3 */}
-        <Grid
-          item
-          xs={10}
-          sx={{
-            py: 2,
-          }}
-        >
-          <Typography
-            sx={{
-              color: "black",
-              textAlign: "right",
-              fontWeight: "bold",
-              fontSize: "1.5rem",
-            }}
-          >
-            Confused about which gadget to buy? 😕
-          </Typography>
+            <Typography sx={styles.text}>
+              Make informed decisions by weighing the pros and cons of each
+              product.
+            </Typography>
+          </Grid>
 
-          <Typography
-            sx={{
-              color: "black",
-              textAlign: "right",
-              fontSize: "1rem",
-              letterSpacing: "0.1rem",
-              mt: "20px",
-            }}
-          >
-            We are here to help you. <br />
-            Find the best gadgets for your needs. <br />
-            Read reviews from other users. <br />
-          </Typography>
+          {/* 4th item */}
+          <Grid item sx={styles.features}>
+            <MobileFriendlyIcon sx={{ fontSize: 80, color: "#588157" }} />
+            <Typography sx={{ color: "#000", fontWeight: "bold" }}>
+              {" "}
+              Mobile Friendly
+            </Typography>
+
+            <Typography sx={styles.text}>
+              Access our reviews on-the-go from their smartphones or tablets.
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
     </div>

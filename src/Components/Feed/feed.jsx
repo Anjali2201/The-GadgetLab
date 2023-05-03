@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-// import ChipsArray from "./chips";
+import ChipsArray from "./chips";
 import getCookie from "../../hooks/getCookie";
 
 let token = getCookie("login");
@@ -49,6 +49,7 @@ const Feedpage = () => {
           xs={12}
           sx={{
             display: "flex",
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             height: "auto",
@@ -56,10 +57,11 @@ const Feedpage = () => {
             mb: "50px",
           }}
         >
-          <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+          <Typography variant="h4" sx={{ fontWeight: "bold",mb:2 }}>
             All Reviews
           </Typography>
-          {/* <ChipsArray /> */}
+
+          <ChipsArray />
         </Grid>
 
         {/* ------------------------------Left Bar---------------------------------- */}

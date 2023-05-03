@@ -18,15 +18,10 @@ const homepage = () => {
       >
         {/* ----------------------------------- Heading -------------------------- */}
         <LandingPage />
-        <Divider
-          sx={{ width: "90%", height: "1px", backgroundColor: "#DADDD8" }}
-        />
+
         {/* ----------------------------------- About -------------------------- */}
 
         <About />
-        <Divider
-          sx={{ width: "90%", height: "1px", backgroundColor: "#DADDD8" }}
-        />
       </Grid>
     </div>
   );
