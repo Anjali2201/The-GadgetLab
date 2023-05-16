@@ -8,7 +8,7 @@ const SIngleReview = () => {
     <div>
       <Navbar />
       <Review />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

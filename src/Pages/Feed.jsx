@@ -8,7 +8,7 @@ const Feed = () => {
     <div>
       <Navbar />
       <FeedPage />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

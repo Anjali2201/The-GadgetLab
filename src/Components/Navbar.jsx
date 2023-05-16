@@ -208,7 +208,9 @@ export default function Appbar(props) {
                 <Button sx={btn} onClick={logout}>
                   Logout
                 </Button>
-                <Button sx={btn}>{username}</Button>
+                <Button href="/profile" sx={btn}>
+                  {username}
+                </Button>
               </ButtonGroup>
             )}
           </Grid>

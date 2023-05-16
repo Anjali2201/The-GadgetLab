@@ -1,16 +1,14 @@
 import React from "react";
-import Postreview from "../Components/Feed/postreview";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 
-const Reviews = () => {
+const Profile = () => {
   return (
     <div>
       <Navbar />
-      <Postreview />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
 
-export default Reviews;
+export default Profile;

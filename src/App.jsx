@@ -6,6 +6,7 @@ import Signup from "./Pages/Signup";
 import Feed from "./Pages/Feed";
 import Reviews from "./Pages/Reviews";
 import SingleReview from "./Pages/SingleReview";
+import Profile from "./Pages/Profile";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/feed" element={<Feed />} />
         <Route path="/newreview" element={<Reviews />} />
         <Route path="/review/:id" element={<SingleReview />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );

@@ -8,7 +8,7 @@ const Signup = () => {
     <div>
       <Navbar />
       <SignupPage />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
