@@ -7,29 +7,33 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-import ChipsArray from "./chips";
-import getCookie from "../../hooks/getCookie";
+import getCookie from "../hooks/getCookie";
 
 let token = getCookie("login");
-let email = "";
+let emailId = "";
+let username = "";
 if (token) {
-  email = JSON.parse(getCookie("login")).email;
-  console.log(email);
+  emailId = JSON.parse(token).email;
+  username = JSON.parse(token).username;
+  console.log(emailId);
 }
 
-const Feedpage = () => {
+const Userprofile = () => {
   const [post, setMyData] = useState([]);
   const [error, setIsError] = useState("");
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/post/getallposts")
+      .get("http://localhost:8000//api/post/getpostbyusername", {
+        params: {
+          email: emailId,
+        },
+      })
       .then((response) => setMyData(response.data.posts))
       .catch((error) => setIsError(error.message));
+    console.log(emailId);
+    console.log(post);
   }, []);
-
-  // console.log(email);
-  // console.log(post.email);
 
   return (
     <div>
@@ -57,10 +61,10 @@ const Feedpage = () => {
           }}
         >
           <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
-            All Reviews
+            Hello {username}!
           </Typography>
 
-          <ChipsArray />
+          {/* <ChipsArray /> */}
         </Grid>
 
         {/* ------------------------------Left Bar---------------------------------- */}
@@ -111,7 +115,6 @@ const Feedpage = () => {
             justifyContent: "center",
             backgroundColor: "#EEF0F2",
             alignItems: "center",
-            // border: "1px solid black",
           }}
         >
           {post.map((post) => (
@@ -141,33 +144,6 @@ const Feedpage = () => {
               >
                 <CardHeader title={post.gadgetname} />
 
-                {/* // Button to edit and delete the post */}
-                {email === post.authoremail ? (
-                  <Grid item xs={12} sx={{ textAlign: "right" }}>
-                    <Link href={`/edit/${post._id}`} underline="none">
-                      <Button
-                        sx={{ color: "black", fontSize: "15px" }}
-                        variant="outlined"
-                      >
-                        Edit
-                      </Button>
-                    </Link>
-                    <Link href={`/delete/${post._id}`} underline="none">
-                      <Button
-                        sx={{
-                          color: "black",
-                          fontSize: "15px",
-                          ml: "10px",
-                        }}
-                        variant="outlined"
-                      >
-                        Delete
-                      </Button>
-                    </Link>
-                  </Grid>
-                ) : (
-                  <></>
-                )}
                 <CardContent>
                   <Grid
                     item
@@ -247,6 +223,7 @@ const Feedpage = () => {
                     </Typography>
                   </Grid>
                 </CardContent>
+
                 <CardActions>
                   <Grid
                     container
@@ -263,7 +240,7 @@ const Feedpage = () => {
                           axios
                             .post(
                               "http://localhost:8000/api/post/like/" + post._id,
-                              { email }
+                              { emailId }
                             )
                             .then((response) => {
                               window.location.reload();
@@ -317,4 +294,4 @@ const Feedpage = () => {
   );
 };
 
-export default Feedpage;
+export default Userprofile;
