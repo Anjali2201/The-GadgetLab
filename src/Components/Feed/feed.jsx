@@ -19,17 +19,12 @@ if (token) {
 
 const Feedpage = () => {
   const [post, setMyData] = useState([]);
-  const [error, setIsError] = useState("");
 
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/post/getallposts")
-      .then((response) => setMyData(response.data.posts))
-      .catch((error) => setIsError(error.message));
+      .then((response) => setMyData(response.data.posts));
   }, []);
-
-  // console.log(email);
-  // console.log(post.email);
 
   return (
     <div>
@@ -134,8 +129,8 @@ const Feedpage = () => {
                   alignItems: "center",
                   borderRadius: "25px",
                   "&:hover": {
-                    border: "1px solid black",
                     boxShadow: "0 0 10px 0 rgba(0,0,0,0.2)",
+                    cursor: "pointer",
                   },
                 }}
               >

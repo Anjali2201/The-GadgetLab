@@ -11,7 +11,7 @@ const data = [
     icon: <GradingIcon />,
     title: "User Reviews",
     text: "Post own reviews of gadgets you have tried and tested",
-    color: "#caf0f8",
+    color: "#d6d4a0",
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ const data = [
     icon: <CompareIcon />,
     title: "Compare",
     text: "Make informed decisions by weighing the pros and cons of each product.",
-    color: "#bfd7ff",
+    color: "#d5c7bc",
   },
   {
     id: 4,
@@ -84,7 +84,7 @@ const About = () => {
         }}
       >
         {data.map((item) => (
-          <Grid item key={item.id} sx={styles.features} bgcolor= {item.color}>
+          <Grid item key={item.id} sx={styles.features} bgcolor={item.color}>
             <div>{item.icon}</div>
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
               {item.title}
