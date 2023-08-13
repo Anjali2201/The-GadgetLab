@@ -8,7 +8,7 @@ const Reviews = () => {
     <div>
       <Navbar />
       <Postreview />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

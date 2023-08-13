@@ -8,7 +8,7 @@ const Profile = () => {
     <div>
       <Navbar />
       <Userprofile />
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
