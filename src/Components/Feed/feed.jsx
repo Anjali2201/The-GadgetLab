@@ -22,7 +22,7 @@ const Feedpage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/post/getallposts")
+      .get("https://breakable-toad-buckle.cyclic.app/api/post/getallposts/")
       .then((response) => setMyData(response.data.posts));
   }, []);
 
