@@ -31,6 +31,7 @@ const Userprofile = () => {
       })
       .then((response) => setMyData(response.data.posts))
       .catch((error) => setIsError(error.message));
+    console.log(error);
     console.log(emailId);
     console.log(post);
   }, []);

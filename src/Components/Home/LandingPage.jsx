@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import gif from "../Assets/gif.gif";
-import { Link } from "react-router-dom";
 const LandingPage = () => {
   return (
     <Grid

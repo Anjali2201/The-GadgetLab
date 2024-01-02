@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import LandingPage from "./LandingPage";
 import About from "./About";
 
